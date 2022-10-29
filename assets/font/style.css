@@ -31,7 +31,7 @@
 }
 .v-application{
     font-family: iranyekan!important;
-    letter-spacing: 0
+    letter-spacing: 0!important
 }
 .v-messages__message{
     text-align: right;
