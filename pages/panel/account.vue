@@ -2,7 +2,7 @@
      <v-card class="inner-card">
 
       <h1>
-        سلام {{$auth.user.name}}!
+        حساب کاربری
         </h1>
     </v-card>
 

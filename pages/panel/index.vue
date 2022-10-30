@@ -1,7 +1,9 @@
 <template>
-     <v-card style="padding:1rem">
+     <v-card class="inner-card" >
 
-      ddd jj
+      <h1>
+        سلام {{$auth.user.name}}!
+        </h1>
     </v-card>
 
 </template>

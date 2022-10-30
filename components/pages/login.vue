@@ -199,28 +199,7 @@
             prepend-inner-icon="mdi-cursor-text"
           ></v-text-field>
         </div>
-        <p
-          v-if="stage == 0"
-          class="
-            ac--text
-            text--align__center
-            text--weight__regular
-            text--size__regular
-            sign-in--privacy-policy
-          "
-          dir="auto"
-          auto-dir="auto"
-        >
-          با ورود و یا ثبت نام در وبلایت شما
-          <a
-            target="_blank"
-            href="https://weblite.im/privacy-policy"
-            rel="noopener noreferrer"
-            style="font-weight: bold; color: rgb(0, 192, 255)"
-            >قوانین حریم خصوصی</a
-          >
-          آن را می&zwnj;پذیرید.
-        </p>
+      
 
         <v-btn
           v-if="stage == 0"
@@ -278,6 +257,10 @@
 export default {
   transition: {
     afterLeave(el) {},
+  },
+  loading: {
+    color: 'blue',
+    height: '5px'
   },
   name: "Login",
   data() {
@@ -361,9 +344,8 @@ export default {
           this.action = check.action;
           if (check.success == 0) {
             this.error = check.msg;
-          }
-          
-          this.stage = 1;
+          }else{
+            this.stage = 1;
 
           if (this.action == 1) {
             var timer = setInterval(() => {
@@ -383,6 +365,9 @@ export default {
           } else {
             this.login_msg = "رمز عبور خود را وارد کنید";
           }
+          }
+          
+          
 
           //this.error = (check.action);
         } catch (e) {

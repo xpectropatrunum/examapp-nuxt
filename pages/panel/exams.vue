@@ -2,7 +2,7 @@
      <v-card class="inner-card">
 
       <h1>
-        سلام {{$auth.user.name}}!
+        آزمون ها
         </h1>
     </v-card>
 
