@@ -12,6 +12,8 @@
 </template>
 <script>
 export default {
+    middleware: ["login"],
+
   data() {
     return {
 
@@ -39,7 +41,7 @@ export default {
  
   position: absolute;
   height: 30vh;
-  background: url(https://www.weblite.me/assets/svg/BG.svg);
+  background: url(/assets/BG.svg);
    background-color: antiquewhite;
 }
 </style>

@@ -39,7 +39,7 @@ export default {
     
   ],
   router: {
-    middleware: 'authenticated'
+   
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -68,6 +68,8 @@ export default {
           logout: {
             url: 'logout',
             method: 'get',
+            propertyName: 'success',
+
           },
           refresh: {
             url: 'refresh',
@@ -84,8 +86,8 @@ export default {
         }
       }
     }, redirect: {
-      login: '/dashboard',
-      logout: '/login',
+      login: '/panel',
+      logout: '/',
       home: '/',
     },
   },
