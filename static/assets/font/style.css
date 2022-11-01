@@ -17,6 +17,20 @@
 		 url('/assets/font/woff/iranyekanwebthinfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 		 url('/assets/font/ttf/iranyekanwebthinfanum.ttf') format('truetype');
 }
+@font-face {
+	font-family: morabba;
+	src: url('/assets/font/woff/MorabbaVF.woff');
+}
+.morabba{
+	font-family: morabba!important;
+}
+@font-face {
+	font-family: sansx;
+	src: url('/assets/font/woff/IRANSansX.woff');
+}
+.sans-x{
+	font-family: sansx!important;
+}
 
 @font-face {
 	font-family: iranyekan;

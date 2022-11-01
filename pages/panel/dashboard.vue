@@ -7,3 +7,9 @@
     </v-card>
 
 </template>
+<script>
+export default {
+  name:"dashboard",
+  transitions: "home",
+}
+</script>

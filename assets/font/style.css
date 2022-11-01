@@ -77,10 +77,27 @@
 		 url('/assets/font/woff/iranyekanwebextrablackfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 		 url('/assets/font/ttf/iranyekanwebextrablackfanum.ttf') format('truetype');
 }
-
+@font-face {
+	font-family: morabba;
+	src: url('/assets/font/woff/MorabbaVF.woff');
+}
+.morabba{
+	font-family: morabba!important;
+}
+@font-face {
+	font-family: sansx;
+	src: url('/assets/font/woff/IRANSansX.woff');
+}
+.sans-x{
+	font-family: sansx!important;
+}
 .v-application{
-    font-family: iranyekan!important;
+    font-family: sansx!important;
     letter-spacing: 0!important
+}
+.v-btn{
+	letter-spacing:0!important;
+
 }
 .v-messages__message{
     text-align: right;

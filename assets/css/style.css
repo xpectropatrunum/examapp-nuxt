@@ -679,7 +679,7 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    font-family: iranyekan,Roboto,sans-serif!important;
+    font-family: sansx,Roboto,sans-serif!important;
     scroll-behavior: smooth;
     overscroll-behavior-y: contain;
     touch-action: manipulation
@@ -5082,6 +5082,7 @@ body[dir=ltr] .contacts--search-icon {
     justify-content: center;
     margin: 0 auto 20px;
     max-width: 185px;
+    padding-top: 15px;
     pointer-events: none
 }
 
@@ -5200,7 +5201,7 @@ body[dir=ltr] .contacts--search-icon {
 .sign-in--hint {
     color: #000;
     font-size: 21px;
-    font-weight: 700;
+
     letter-spacing: -1.26px;
     line-height: 1.7;
     margin-top: 13px
@@ -5615,9 +5616,10 @@ body[dir=ltr] .contacts--search-icon {
 }
 
 .logo-box--slang {
-    font-size: 11px;
-    font-weight: 700;
-    color: #7f7f7f
+    font-size: 55px;
+    font-weight: 900;
+    padding-top: 15px;
+    padding-bottom: 30px;
 }
 
 @-webkit-keyframes fa--slang {
@@ -8961,7 +8963,6 @@ body[dir=ltr] .c--member-list--icon-search {
 h1.edu-chat-info--text {
     font-size: 17px;
     line-height: 1.2;
-    letter-spacing: -.66px;
     color: #575757
 }
 
@@ -8998,7 +8999,7 @@ p.edu-chat-info--text {
 h1.edu-static--text {
     font-size: 20px;
     line-height: 1;
-    letter-spacing: -.78px;
+
     color: #00c0ff
 }
 

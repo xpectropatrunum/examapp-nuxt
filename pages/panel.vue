@@ -17,12 +17,12 @@
         permanent
       >
         <v-list-item class="px-2">
+       
+
+          <v-list-item-title  v-if="!mini" class="text-right">{{ $auth.user.name }}</v-list-item-title>
           <v-list-item-avatar>
-            <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+            <v-img :src="$auth.user.image"></v-img>
           </v-list-item-avatar>
-
-          <v-list-item-title>{{ $auth.user.name }}</v-list-item-title>
-
           <!-- <v-btn icon @click.stop="mini = !mini">
             <v-icon>mdi-chevron-right</v-icon>
           </v-btn> -->
@@ -78,6 +78,8 @@ export default {
   middleware: ["authenticated"],
 
   name: "Dashboard",
+
+
   data() {
     return {
       drawer: true,
@@ -102,22 +104,27 @@ export default {
 </script>
 <style>
 .inner-card{
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 3rem 2rem;
+}
+@media screen and (max-width: 600px) {
+  .inner-card{
+  padding: 1rem 1rem 1rem 1.5rem;
+}
 }
 .container{
   direction: rtl;
   text-align: right;
   margin-top:100px;
+  padding-right: 70px;
+  padding-bottom: 50px;
 
 }
 #root{
   background-color: #f5f5f5;min-height: 100vh;
 }
 h1{
-
-
+  font-family: morabba;
     font-weight: 800;
-    letter-spacing: -1.26px;
     line-height: 1.7;
     margin-top: 13px;
 }</style>
