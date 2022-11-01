@@ -5126,9 +5126,11 @@ body[dir=ltr] .contacts--search-icon {
 
 .c--auth-box-header-svg {
     height: 100%;
-    -webkit-filter: brightness(1.5) opacity(.3);
-    filter: brightness(1.5) opacity(.3);
-    background-image: url(/assets/img/bg.svg)
+    -webkit-filter: brightness(10) opacity(.08);
+    filter: brightness(10) opacity(.08);
+    background-image: url(/assets/BG.svg);
+    background-repeat-x: revert;
+    background-size: cover;
 }
 
 .auth-box--background {
@@ -5152,7 +5154,7 @@ body[dir=ltr] .contacts--search-icon {
     width: -webkit-calc(100% - 50px);
     width: calc(100% - 50px);
     max-width: 350px;
-    max-height: 600px;
+    max-height: 650px;
     box-shadow: 0 2px 8px rgba(0,0,0,.25);
     background-color: #fff;
     border-radius: 25px;

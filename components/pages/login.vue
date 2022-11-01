@@ -7,7 +7,7 @@
       </div>
       <div class="auth--body" dir="ltr">
         <div class="auth--logo-box">
-     
+
           <p class="
               ac--text
               text--align__center
@@ -15,7 +15,7 @@
               text--size__regular
               logo-box--slang morabba
             " dir="auto" auto-dir="auto">
-             دکترشو
+            دکترشو
           </p>
         </div>
         <p class="
@@ -69,9 +69,16 @@
                 'رمز عبور با تکرار آن مطابقت ندارد',
             ]" :type="show2 ? 'text' : 'password'" @click:prepend="show2 = !show2" required label="تکرار کلمه عبور"
             prepend-inner-icon="mdi-cursor-text"></v-text-field>
+
+
+
         </div>
 
 
+
+        <div style="display: flex;justify-content: center;width:100%">
+          <img src="/assets/illu/login.png">
+        </div>
         <v-btn v-if="stage == 0" rounded depressed style="margin-top: auto" :loading="loading"
           :disabled="!validPhone || loading" color="primary" @click="signIn">
           بعدی
@@ -88,9 +95,10 @@
           :disabled="!validLogin || loading" color="primary" @click="signIn">
           ورود
         </v-btn>
+
       </div>
     </div>
-  </div>
+    </div>
 </template>
 <script>
 export default {

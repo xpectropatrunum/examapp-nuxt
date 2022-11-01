@@ -1,5 +1,9 @@
 export const state = () => ({
-    exams: []
+    exams: [],
+    startedExam: {},
+    answers: {},
+
+    
 })
 export const getters = {
     getExams: (state) => {
@@ -10,5 +14,11 @@ export const getters = {
 export const mutations = {
     setExams(state, exams) {
         state.exams = exams
+    },
+    setExam(state, exam) {
+        state.startedExam = exam
+    },
+    setAnswer(state, answers) {
+        state.answers = answers
     },
 }
