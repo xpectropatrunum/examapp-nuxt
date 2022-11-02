@@ -64,14 +64,14 @@ export default {
     '@nuxtjs/auth-next',
   ],
   axios: {
-    baseURL: 'http://localhost:8000/api/'
+    baseURL: 'https://api.drsho1.ir/api/'
   },
   auth: {
     watchLoggedIn: true,
     strategies: {
       'laravelJWT': {
         provider: 'laravel/jwt',
-        url: 'http://localhost:8000/api/',
+        url: 'https://api.drsho1.ir/api/',
         endpoints: {
           login: {
             url: 'login',
@@ -120,5 +120,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  server: {
+    port: 5298
   }
 }
