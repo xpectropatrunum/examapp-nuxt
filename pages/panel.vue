@@ -123,13 +123,13 @@ export default {
       drawer: true,
       items: [
         {
-          title: "داشبورد",
+          title: "داشبــــــــــــــــورد",
           icon: "mdi-view-dashboard",
           link: "/panel/dashboard",
         },
-        { title: "آزمون های من", icon: "mdi-book", link: "/panel/exams" },
-        { title: "نتایج آزمون", icon: "mdi-file-chart", link: "/panel/exam-results" },
-        { title: "حساب کاربری", icon: "mdi-account", link: "/panel/account" },
+        { title: "آزمون های مــن", icon: "mdi-book", link: "/panel/exams" },
+        { title: "نتایــــج آزمــــون", icon: "mdi-file-chart", link: "/panel/exam-results" },
+        { title: "حســـاب کاربـری", icon: "mdi-account", link: "/panel/account" },
       ],
       mini: true,
     };
