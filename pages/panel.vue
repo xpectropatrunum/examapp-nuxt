@@ -39,7 +39,7 @@
                 <v-list-item-title class="text-right">خروج</v-list-item-title>
               </v-list-item-content>
               <v-list-item-icon>
-                <v-icon>mdi-logout</v-icon>
+                <v-icon>mdi-logout-variant</v-icon>
               </v-list-item-icon>
             </v-list-item>
           </v-list>
@@ -128,6 +128,7 @@ export default {
           link: "/panel/dashboard",
         },
         { title: "آزمون های من", icon: "mdi-book", link: "/panel/exams" },
+        { title: "نتایج آزمون", icon: "mdi-file-chart", link: "/panel/exam-results" },
         { title: "حساب کاربری", icon: "mdi-account", link: "/panel/account" },
       ],
       mini: true,

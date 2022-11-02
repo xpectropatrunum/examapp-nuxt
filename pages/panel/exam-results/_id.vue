@@ -136,7 +136,7 @@
 <script>
 export default {
   name: "exams",
-  middleware: ["exam"],
+  middleware: ["exam-result"],
   transitions: "home",
   data() {
     return {
