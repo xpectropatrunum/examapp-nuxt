@@ -108,10 +108,7 @@ export default {
       home: '/',
     },
   },
-  server: {
-    host: 'localhost',
-    port: 3000
-  },
+
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
