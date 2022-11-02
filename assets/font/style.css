@@ -227,3 +227,146 @@
 .border-r-20{
 	border-radius: 10px
 }
+.custom-loader {
+	animation: loader 1s infinite;
+	display: flex;
+  }
+  
+  @-moz-keyframes loader {
+	from {
+	  transform: rotate(0);
+	}
+  
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+  
+  @-webkit-keyframes loader {
+	from {
+	  transform: rotate(0);
+	}
+  
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+  
+  @-o-keyframes loader {
+	from {
+	  transform: rotate(0);
+	}
+  
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+  
+  @keyframes loader {
+	from {
+	  transform: rotate(0);
+	}
+  
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+  .z-100{
+	z-index: 100!important;
+  }
+  
+  .infos .item {
+	display: flex;
+	justify-content: space-between;
+	font-size: 15px;
+  }
+  
+  .p-0 {
+	padding: 0
+  }
+  
+  .p-2 {
+	padding: 15px
+  }
+  
+  .text-row {
+	padding: 7px 15px 15px 15px;
+  
+  
+  }
+  
+  .v-skeleton-loader__button.v-skeleton-loader__bone {
+	width: 100%;
+  }
+  
+  .main-logo {
+	border-radius: 8px 8px 0 0;
+	width: 100%;
+	max-height: 200px;
+	-o-object-fit: scale-down;
+	object-fit: scale-down;
+  }
+  .color-red{
+	color:rgb(209, 0, 0)
+  }
+  .color-green{
+	color:green
+  }
+  .Vue-Toastification__toast{
+	font-family: sansx!important;
+  }
+  .header {
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 57px;
+	border-bottom: 1px #cdcdcd solid;
+  }
+  
+  .header .title-header {
+	font-family: morabba;
+	font-size: 22px;
+	font-weight: 900;
+  
+  }
+  
+  .inner-card {
+	padding: 2rem 3rem 3rem 2rem;
+  }
+  
+  .container {
+	direction: rtl;
+	text-align: right;
+	margin-top: 50px!important;
+	padding-right: 70px!important;
+	padding-bottom: 50px!important;
+  }
+  
+  @media screen and (max-width: 600px) {
+	.inner-card {
+	  padding: 1.5rem 1rem 1rem 1.5rem!important;
+	}
+  
+	.container {
+  
+	  margin-top: 20px!important;
+  
+  
+	}
+  }
+  
+  .bg-gray {
+	background-color: #f5f5f5!important;
+  
+  }
+  .v-list.v-sheet.v-list--dense{
+	padding-top:0
+  }
+  h1 {
+	font-size: 25px;
+	font-family: morabba;
+	font-weight: 800;
+	line-height: 1.7;
+	margin-top: 13px;
+  }

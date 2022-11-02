@@ -1,132 +1,73 @@
 <template>
   <div>
-    <v-row justify="center">
-      <v-dialog persistent right v-model="dialog" max-width="500">
-        <v-card style="direction: rtl">
-          <v-card-title class="font-bold"> وقت تموم شد </v-card-title>
+   
 
-          <v-card-text>
-            امیدوارم آزمون خوبی داده باشی، الان وقت دیدن جوابه!
-          </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text @click="redirectToResult()">
-              بزن بریم
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-row>
-
-    <v-row justify="center">
-      <v-dialog right v-model="dialog1" max-width="500">
-        <v-card style="direction: rtl">
-          <v-card-title class="font-bold"> هشدار </v-card-title>
-
-          <v-card-text> واقعا میخوای تموم کنی؟ </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="gray darken-1" text @click="dialog1 = false">
-              نه هنور
-            </v-btn>
-            <v-btn color="red darken-1" text @click="endExams(true)">
-              آره
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-row>
-
-    <h1 class="mb-1">{{ startedExam.title }}</h1>
+    <h1 class="mb-1">{{ report.exam.title }}</h1>
 
     <div class="text-gray mb-4" style="font-size: 14px; color: gray">
-      {{ startedExam.description }}
+      {{ report.exam.description }}
     </div>
     <v-row>
       <v-col cols="12" lg="9" md="8">
         <v-card style="border-radius: 8px" class="inner-card">
-          <a :href="startedExam.file" class="mb-2" target="_blank"
-            >برای مشاهده سوالات در new tab کلیک کنید</a
-          >
-          <!-- <WebViewer :url="startedExam.file" /> -->
+          <a :href="report.exam.file" class="mb-2" target="_blank">برای مشاهده سوالات در new tab کلیک کنید</a>
+          <!-- <WebViewer :url="report.exam.file" /> -->
         </v-card>
       </v-col>
       <v-col cols="12" lg="3" md="4">
         <v-card style="border-radius: 8px" class="inner-booking">
-          <div class="justify-space-between d-flex font-14">
-            <div>زمان باقی مانده</div>
-            <div>{{ timer }}</div>
+          <div class="justify-space-between d-flex font-14 color-gray">
+            <div>زمان صرف شده</div>
+            <div>{{ time }}</div>
           </div>
-          <div class="justify-space-between d-flex font-14">
+          <div class="justify-space-between d-flex font-14 color-gray">
+            <div> تعداد درست </div>
+            <div>{{ report.result.c}}</div>
+          </div>
+          <div class="justify-space-between d-flex font-14 color-gray">
+            <div>تعداد نادرست </div>
+            <div>{{ report.result.f }}</div>
+          </div>
+          <div class="justify-space-between d-flex font-14 color-gray">
+            <div>تعداد نزده </div>
+            <div>{{ report.result.a - report.result.f -  report.result.c }}</div>
+          </div>
+          <div class="justify-space-between d-flex font-14 color-gray">
             <div>نمره منفی</div>
-            <div>{{ startedExam.neg_score ? "دارد" : "ندارد" }}</div>
+            <div>{{ report.exam.neg_score ? "دارد" : "ندارد" }}</div>
           </div>
 
           <div class="option-container" dir="ltr">
-            <div
-              class="d-flex justify-space-between mt-2"
-              :v-bind-key="index"
-              v-for="(item, index) in Array(startedExam.q_number).fill(0)"
-            >
+            <div class="d-flex justify-space-between mt-2" :v-bind-key="index"
+              v-for="(item, index) in Array(report.exam.q_number).fill(0)">
               <div>{{ index + 1 }}</div>
               <div>
-                <v-btn-toggle
-                  @change="submitAnswer(index + 1)"
-                  v-model="answers[index + 1]"
-                  style="max-width: fit-content"
-                  :color="colors[index + 1] ?? 'green'"
-                >
-                  <v-btn
-                    height="28px"
-                    width="37px"
-                    style="padding: 0; min-width: 0"
-                  >
+                <v-btn-toggle disabled style="max-width: fit-content">
+                  <v-btn :style="
+                  getCorrectColor(index, 1) + getWrongColor(index, 1)" disabled height="28px" class="t-btn"
+                    width="37px" style="padding: 0; min-width: 0">
                     1
                   </v-btn>
-                  <v-btn
-                    height="28px"
-                    width="37px"
-                    style="padding: 0; min-width: 0"
-                  >
+                  <v-btn :style="
+                  getCorrectColor(index, 2) + getWrongColor(index, 2)" disabled height="28px" class="t-btn"
+                    width="37px" style="padding: 0; min-width: 0">
                     2
                   </v-btn>
-                  <v-btn
-                    height="28px"
-                    width="37px"
-                    style="padding: 0; min-width: 0"
-                  >
+                  <v-btn :style="
+                  getCorrectColor(index, 3) + getWrongColor(index, 3)" disabled height="28px" class="t-btn"
+                    width="37px" style="padding: 0; min-width: 0">
                     3
                   </v-btn>
-                  <v-btn
-                    height="28px"
-                    width="37px"
-                    style="padding: 0; min-width: 0"
-                  >
+                  <v-btn :style="
+                  getCorrectColor(index, 4) + getWrongColor(index, 4)" disabled height="28px" class="t-btn"
+                    width="37px" style="padding: 0; min-width: 0">
                     4
                   </v-btn>
                 </v-btn-toggle>
               </div>
             </div>
           </div>
-          <div class="justify-space-between d-flex font-14">
-            <v-btn
-              class="m-0 mt-4 col-12"
-              style="padding: 0;color:white"
-              :loading="loading"
-              :disabled="loading"
-              color="red darken-2"
-              @click="endExams(false)"
-            >
-              اتمام
-              <template v-slot:loader>
-                <span class="custom-loader">
-                  <v-icon light>mdi-cached</v-icon>
-                </span>
-              </template>
-            </v-btn>
-          </div>
+
         </v-card>
       </v-col>
     </v-row>
@@ -150,112 +91,74 @@ export default {
       name: this.$auth.user.name,
       counter_sec: 60,
       timer: "",
+      answers: {},
+      time: "",
+      correct: 'background-color: green !important;color: white !important;',
+      correct_alt: 'border: 2px green solid!important;color: green !important;font-weight:600;',
+      wrong: 'background-color: rgb(219, 0, 0) !important;color: white !important;',
     };
   },
   async fetch() {
     try {
-      if (!this.startedExam.id) {
-        var startedExam = await this.$axios
-          .get("exams/get/" + this.$route.params.id)
-          .then((res) => res.data);
-        this.$store.commit("exam/setExam", startedExam.data);
-      }
-      this.counter_sec = this.startedExam.remained;
+      if (!this.report) {
+        var report = await $axios.get("exams/exam-reports/" + route.params.id).then(res => res.data)
 
-      var obj = { ...this.startedExam.session.answers };
-      for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          obj[key] -= 1;
+        if (report.success) {
+          this.$store.commit("report/setReport", report.data);
+        } else {
+          this.$router.push("/panle/exam-reports")
         }
       }
-
-      this.$store.commit("exam/setAnswer", obj);
     } catch (er) {
-      console.log(er);
       this.$toast.error("خطایی رخ داد لطفا بعدا تلاش کنید");
     }
-    console.log(this.startedExam);
-  },
-  watch: {
-    timer: {
-      handler(value) {
-        if (this.counter_sec > 0) {
-          setTimeout(() => {
-            this.counter_sec--;
-            if (this.counter_sec < 3600) {
-              this.timer = new Date(this.counter_sec * 1000)
-                .toISOString()
-                .slice(14, 19);
-            } else {
-              this.timer = new Date(this.counter_sec * 1000)
-                .toISOString()
-                .slice(11, 19);
-            }
-          }, 1000);
-        } else {
-          this.dialog = true;
-        }
-      },
-      immediate: true,
-    },
-  },
-  methods: {
-    async endExams(permitted = false) {
-      if (!permitted) {
-        this.dialog1 = true;
-      } else {
-        this.dialog1 = false;
-        try {
-          this.loading = true;
-          var end = await this.$axios
-            .post(`exams/${this.startedExam.id}/finish`)
-            .then(res => res.data);
-          if (end.success) {
-            window.location.href = "/panel/exams"
-          } else {
-            this.$toast.error("خطایی رخ داد لطفا دوباره تلاش کنید");
-          }
-        } catch (err) {
-          this.$toast.error("خطایی رخ داد لطفا دوباره تلاش کنید");
-        }
-        this.loading = false;
-      }
-    },
-    async submitAnswer(index) {
+    this.answers = { ...this.report.exam.session.answers }
+    var time = this.report.exam.session.elapsed_time;
+    if (time < 3600) {
+      this.time = new Date(time * 1000)
+        .toISOString()
+        .slice(14, 19);
+    } else {
+      this.time = new Date(time * 1000)
+        .toISOString()
+        .slice(11, 19);
+    }
 
-      try {
-        var request = await this.$axios
-          .post(
-            `exams/${this.startedExam.id}/submit-answer`,
-            {
-              q: index,
-              a: this.answers[index] + 1,
-            },
-            { progress: false }
-          )
-          .then((res) => res.data);
-        if (request.success) {
-          this.colors[index] = "green";
-        } else {
-          this.$toast.error("دوباره تلاش کنید");
-          this.colors[index] = "red";
+
+  },
+
+  methods: {
+    getWrongColor(index, num) {
+      if (this.answers[index + 1] != this.report.result.keys[index]) {
+        if (num == this.answers[index + 1]) {
+          return this.wrong;
+
         }
-      } catch (err) {
-        this.$toast.error("دوباره تلاش کنید");
-        this.colors[index] = "red";
       }
+      return "";
     },
+    getCorrectColor(index, num) {
+      if (num == this.report.result.keys[index]) {
+       
+          if (this.answers[index + 1] == null) {
+            return this.correct_alt;
+
+          }else{ return this.correct;}
+        
+      }
+
+      return "";
+    }
+
+
+
+
   },
   computed: {
-    exams() {
-      return [...this.$store.state.exam.exams];
+    report() {
+      return { ...this.$store.state.report.report };
     },
-    startedExam() {
-      return { ...this.$store.state.exam.startedExam };
-    },
-    answers() {
-      return { ...this.$store.state.exam.answers };
-    },
+
   },
 };
 </script>
@@ -265,11 +168,23 @@ export default {
   overflow-y: auto;
   max-height: 600px;
 }
+
 .inner-booking {
   padding: 1rem;
 }
 
 .font-14 {
   font-size: 14px;
+}
+.color-gray{
+  color:#585858
+}
+</style>
+<style lang="scss">
+.t-btn {
+  cursor: default;
+
+  &:hover {}
+
 }
 </style>

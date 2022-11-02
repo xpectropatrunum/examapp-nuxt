@@ -1,17 +1,17 @@
 import colors from 'vuetify/es5/util/colors'
-
+import redirectSSL from 'redirect-ssl'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - examapp',
-    title: 'examapp',
+    titleTemplate: '%s - دکترشو',
+    title: 'سامانه آزمون',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'سامانه آزمون آکادمی کنکور دکترشو' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -19,6 +19,8 @@ export default {
     ]
   },
 
+
+  serverMiddleware: [redirectSSL.create({ redirectHost: "exam.drsho1.ir", enabled: process.env.NODE_ENV === 'production' })],
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/font/style.css',
@@ -26,7 +28,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~plugins/toast.js' , mode: 'client' },
+    { src: '~plugins/toast.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -37,13 +39,27 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
 
-    
+
   ],
   router: {
-   
+
   },
+  manifest: {
+    icon: {
+      iconSrc: '/app.png',
+    },
+    short_name: 'دکترشو',
+    name: 'سامانه آزمون دکترشو',
+
+    descreption: 'سامانه آزمون',
+    start_url: '/',
+    theme_color: '#fff',
+    background_color: '#000',
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    "@nuxtjs/pwa",
     "@nuxtjs/axios",
     '@nuxtjs/auth-next',
   ],
@@ -99,21 +115,7 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
+
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

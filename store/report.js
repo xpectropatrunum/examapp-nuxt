@@ -1,5 +1,6 @@
 export const state = () => ({
     reports: [],
+    report: {},
 
     
 })
@@ -13,4 +14,8 @@ export const mutations = {
     setReports(state, reports) {
         state.reports = reports
     },
+    setReport(state, report) {
+        state.report = report
+    },
+    
 }

@@ -130,9 +130,7 @@ export default {
     };
   },
 
-  metaInfo: {
-    title: "ورود به پنل کاربری - دکترشو",
-  },
+  
   methods: {
     refresh() {
       this.$nuxt.refresh();
@@ -242,7 +240,7 @@ export default {
           if (login.success) {
             this.success = "در حال ورود ...";
             this.stage = 2;
-            setTimeout(() => { this.$router.push("/panel") }, 2000)
+            setTimeout(() => { this.$router.push("/panel/dashboard") }, 2000)
 
           } else {
             this.success = login.msg;

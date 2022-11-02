@@ -1,6 +1,6 @@
 export default function ({ $auth, redirect }) {
 
-  if ($auth.loggedIn) {
-      return redirect('/panel')
+  if ($auth.user?.phone) {
+      return redirect('/panel/dashboard')
     }
   }

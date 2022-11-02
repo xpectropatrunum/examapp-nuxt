@@ -1,32 +1,6 @@
 <template>
   <div>
 
-    <v-row justify="center">
-
-      <v-dialog right v-model="dialog" max-width="500">
-        <v-card style="direction:rtl">
-          <v-card-title class="font-bold">
-            آیا مایل به شروع آزمون هستید؟
-          </v-card-title>
-
-          <v-card-text>
-            از لحظه ورود تایمر فعال خواهد شد و تنها یک بار مجاز به شرکت در آزمون هستید.
-          </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-
-            <v-btn color="gray darken-1" text @click="dialog = false">
-              خیر!
-            </v-btn>
-
-            <v-btn color="green darken-1" text @click="redirectToExam()">
-              شروع
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-row>
 
 
     <h1 class="mb-1"> آزمون های من </h1>
@@ -108,10 +82,19 @@
 
 
 
-      <v-col v-for="item in exams" sm="4" md="4" cols="12" class="p-2">
+      <v-col  v-bind:key="item.id" v-for="item in exams" sm="4" md="4" cols="12" class="p-2">
         <v-card style="border-radius:8px;" class="p-0">
 
-          <div class="img"><img :src="item.image" alt="" class="main-logo">
+          <div class="img">
+            <v-img aspect-ratio="1" :src="item.image" class="main-logo grey lighten-2">
+
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+
+                </v-row>
+              </template>
+            </v-img>
           </div>
           <div class="text text-row">
             <div class="name-choose">
@@ -134,21 +117,13 @@
               <v-btn v-if="item.resumable" class="m-0  mt-4 col-12" style="padding:0" :loading="loading"
                 :disabled="loading" color="success" @click="resumeExam(item.id)">
                 ادامه
-                <template v-slot:loader>
-                  <span class="custom-loader">
-                    <v-icon light>mdi-cached</v-icon>
-                  </span>
-                </template>
+              
               </v-btn>
 
               <v-btn v-else class="m-0  mt-4 col-12" style="padding:0" :loading="loading"
                 :disabled="loading || resumableExam" color="primary" @click="startExam(item.id)">
                 شروع کن
-                <template v-slot:loader>
-                  <span class="custom-loader">
-                    <v-icon light>mdi-cached</v-icon>
-                  </span>
-                </template>
+               
               </v-btn>
 
 
@@ -173,11 +148,42 @@
     <div class="mt-5">
       <img style="float:left" src="/assets/illu/exams.png">
     </div>
+    <v-row justify="center">
+
+      <v-dialog right v-model="dialog" max-width="500">
+        <v-card style="direction:rtl">
+          <v-card-title class="font-bold">
+            آیا مایل به شروع آزمون هستید؟
+          </v-card-title>
+
+          <v-card-text>
+            از لحظه ورود تایمر فعال خواهد شد و تنها یک بار مجاز به شرکت در آزمون هستید.
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn color="gray darken-1" text @click="dialog = false">
+              خیر!
+            </v-btn>
+
+            <v-btn color="green darken-1" text @click="redirectToExam()">
+              شروع
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+
   </div>
 
 </template>
 <script>
 export default {
+  metaInfo: {
+    title: "آزمون های من",
+
+  },
   name: "exams",
   transitions: "home",
   data() {
@@ -269,36 +275,3 @@ export default {
 
 }
 </script>
-<style>
-.infos .item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 15px;
-}
-
-.p-0 {
-  padding: 0
-}
-
-.p-2 {
-  padding: 15px
-}
-
-.text-row {
-  padding: 7px 15px 15px 15px;
-
-
-}
-
-.v-skeleton-loader__button.v-skeleton-loader__bone {
-  width: 100%;
-}
-
-.main-logo {
-  border-radius: 8px 8px 0 0;
-  width: 100%;
-  max-height: 200px;
-  -o-object-fit: scale-down;
-  object-fit: scale-down;
-}
-</style>

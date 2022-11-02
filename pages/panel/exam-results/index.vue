@@ -1,7 +1,7 @@
 <template>
   <div>
 
-   
+
 
     <h1 class="mb-1"> نتایج آزمون</h1>
     <div class="text-gray mb-4" style="font-size:14px; color:gray">گزارش مورد نظر را انتخاب و مشاهده نمایید</div>
@@ -82,23 +82,40 @@
 
 
 
-      <v-col v-for="item in reports" sm="4" md="4" cols="12" class="p-2">
+      <v-col  v-bind:key="item.id" v-for="item in reports" sm="4" md="4" cols="12" class="p-2">
         <v-card style="border-radius:8px;" class="p-0">
 
-          <div class="img"><img :src="item.image" alt="" class="main-logo">
+          <div class="img">
+
+            <v-img aspect-ratio="1" :src="item.exam.image" class="main-logo grey lighten-2">
+
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+
+                </v-row>
+              </template>
+            </v-img>
+
           </div>
           <div class="text text-row">
             <div class="name-choose">
               <div class="name">
-                <h3 class="latin-font">آزمون {{ item.title }}</h3>
+                <h3 class="latin-font">آزمون {{ item.exam.title }}</h3>
               </div>
             </div>
             <div class="infos mt-2">
-              <div class="item"><span>عنـــــــــوان درس</span> <span class="latin-font">{{ item.type }}</span></div>
-              <div class="item"><span>تعــــــــداد سوال </span> <span class="latin-font">{{ item.q_number }}</span>
-              </div>
-              <div class="item"><span>زمان پاسخگویی</span> <span class="latin-font">{{ item.q_time }} دقیقه</span></div>
-              <div class="item"><span>نمــــــره منفـــــی </span> <span class="latin-font">{{ item.neg_score == 1 ?
+
+              <div class="item"><span>تعـــــــداد ســوال </span> <span class="">{{ item.exam.q_number }}</span></div>
+              <div class="item"><span>تعـــــــداد درست </span> <span class="latin-font color-green">{{ item.result.c
+              }}</span></div>
+              <div class="item "><span>تعــــداد نادرست </span> <span class="latin-font color-red">{{ item.result.f
+              }}</span></div>
+              <div class="item "><span>درصـــــــــــــــــــــد</span> <span class="ltr latin-font">{{ item.result.p *
+                  100
+              }}%</span></div>
+              <div class="item"><span>نمــــــره منفـــــی </span> <span class="latin-font">{{ item.exam.neg_score == 1
+                  ?
                   "دارد" : "ندارد"
               }}</span></div>
             </div>
@@ -108,21 +125,13 @@
               <v-btn v-if="item.resumable" class="m-0  mt-4 col-12" style="padding:0" :loading="loading"
                 :disabled="loading" color="success" @click="resumeExam(item.id)">
                 ادامه
-                <template v-slot:loader>
-                  <span class="custom-loader">
-                    <v-icon light>mdi-cached</v-icon>
-                  </span>
-                </template>
+                
               </v-btn>
 
-              <v-btn v-else class="m-0  mt-4 col-12" style="padding:0" :loading="loading"
-                :disabled="loading || resumableExam" color="primary" @click="startExam(item.id)">
-                شروع کن
-                <template v-slot:loader>
-                  <span class="custom-loader">
-                    <v-icon light>mdi-cached</v-icon>
-                  </span>
-                </template>
+              <v-btn v-else class="m-0  mt-4 col-12" style="padding:0" :loading="loading" :disabled="loading"
+                color="primary" @click="redirectToReport(item.id)">
+                مشاهده جزئیات
+                
               </v-btn>
 
 
@@ -152,12 +161,16 @@
 </template>
 <script>
 export default {
+  metaInfo: {
+    title: "نتایج آزمون",
+
+  },
+
   name: "reports",
   transitions: "home",
   data() {
     return {
       selectedExam: -1,
-      dialog: false,
       uploaded: "",
       loaded: false,
       file: "",
@@ -173,7 +186,7 @@ export default {
 
       if (this.reports == 0) {
         var exams = await this.$axios.get("exams/exam-reports").then(res => res.data.data)
-        this.$store.commit("report/setReports", exams.filter(item => item.completed == 0))
+        this.$store.commit("report/setReports", exams)
       }
 
     } catch (er) {
@@ -189,35 +202,9 @@ export default {
   },
   methods: {
 
-    async redirectToReport() {
-      this.dialog = false
+    async redirectToReport(id) {
       this.loading = true
-      try {
-        var exam = await this.$axios.get(`exams/init/${this.selectedExam}`).then(res => res.data)
-
-        if (exam.success) {
-          if (exam.ready) {
-            this.$toast.success("در حال تغییر مسیر ...");
-            setTimeout(() => { this.$router.push(`/panel/exams/${exam.data.id}`) }, 2000)
-          } else {
-            this.$toast.error(exam.msg);
-            this.loading = false
-          }
-        } else {
-          this.$toast.error(exam.msg);
-          this.loading = false
-        }
-
-      } catch (err) {
-        console.log(err)
-        this.loading = false
-        this.$toast.error("خطایی رخ داد لطفا بعدا تلاش کنید");
-
-      }
-
-
-
-
+      this.$router.push(`/panel/exam-results/${id}`)
     }
   },
   computed: {
@@ -232,36 +219,3 @@ export default {
 
 }
 </script>
-<style>
-.infos .item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 15px;
-}
-
-.p-0 {
-  padding: 0
-}
-
-.p-2 {
-  padding: 15px
-}
-
-.text-row {
-  padding: 7px 15px 15px 15px;
-
-
-}
-
-.v-skeleton-loader__button.v-skeleton-loader__bone {
-  width: 100%;
-}
-
-.main-logo {
-  border-radius: 8px 8px 0 0;
-  width: 100%;
-  max-height: 200px;
-  -o-object-fit: scale-down;
-  object-fit: scale-down;
-}
-</style>

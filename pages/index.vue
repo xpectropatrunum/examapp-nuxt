@@ -13,6 +13,10 @@
 <script>
 export default {
     middleware: ["login"],
+    metaInfo: {
+    title: "سامانه آزمون",
+
+  },
 
   data() {
     return {

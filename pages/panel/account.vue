@@ -62,6 +62,10 @@
 </template>
 <script>
 export default {
+  metaInfo: {
+    title: "تنظیمات حساب کاربری",
+  },
+ 
   data() {
     return {
       uploaded: "",

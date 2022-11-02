@@ -1,6 +1,6 @@
 export default function ({ $auth, redirect }) {
 
-  if (!$auth.loggedIn) {
+  if (!$auth.user?.phone) {
       return redirect('/')
     }
   }

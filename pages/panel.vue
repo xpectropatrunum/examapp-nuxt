@@ -1,10 +1,10 @@
 <template>
 
 
-  <v-app>
+  <v-app light>
 
-      <v-navigation-drawer class="primary" height="-webkit-fill-available"
-        style="border-top-right-radius: 0; border-bottom-right-radius: 0" dark absolute right expand-on-hover
+      <v-navigation-drawer dark class="primary z-100" height="-webkit-fill-available"
+        style="border-top-right-radius: 0; border-bottom-right-radius: 0" absolute right expand-on-hover
         v-model="drawer" :mini-variant.sync="mini" permanent>
         <v-list-item class="px-2">
           <v-list-item-title v-if="!mini" class="text-right">{{
@@ -51,14 +51,14 @@
       <div class="header bg-gray">
       <div class="pl-2">
         <a  v-if="false" data-v-e4424248="" class="switch-theme">
-          <svg v-if="!$vuetify.theme.dark" @click="$vuetify.theme.dark = true" data-v-e4424248="" height="28.812" viewBox="0 0 27.337 28.812"
+          <svg  data-v-e4424248="" height="28.812" viewBox="0 0 27.337 28.812"
             width="27.337" xmlns="http://www.w3.org/2000/svg" class="moon uk-svg">
             <path data-v-e4424248=""
               d="M6598.5,989.758a13.5,13.5,0,0,1-2.254-26.812,12.437,12.437,0,0,0,14.093,19.806A13.511,13.511,0,0,1,6598.5,989.758Z"
               fill="none" id="Moon" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               transform="translate(-6584 -961.947)"></path>
           </svg>
-          <svg v-else @click="$vuetify.theme.dark = false" data-v-e4424248="" fill="none" height="24" viewBox="0 0 24 24" width="24"
+          <svg data-v-e4424248="" fill="none" height="24" viewBox="0 0 24 24" width="24"
             xmlns="http://www.w3.org/2000/svg" class="sun uk-svg">
             <path data-v-e4424248=""
               d="M15.25 12C15.25 13.7949 13.7949 15.25 12 15.25C10.2051 15.25 8.75 13.7949 8.75 12C8.75 10.2051 10.2051 8.75 12 8.75C13.7949 8.75 15.25 10.2051 15.25 12Z"
@@ -110,6 +110,8 @@
 </template>
 <script>
 export default {
+  title: "پنل کاربری",
+
   loading: {
     color: "blue",
     height: "5px",
@@ -144,106 +146,4 @@ export default {
   },
 };
 </script>
-<style>
-.header {
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 57px;
-  border-bottom: 1px #cdcdcd solid;
-}
-
-.header .title-header {
-  font-family: morabba;
-  font-size: 22px;
-  font-weight: 900;
-
-}
-
-.inner-card {
-  padding: 1rem 3rem 3rem 2rem;
-}
-
-.container {
-  direction: rtl;
-  text-align: right;
-  margin-top: 50px;
-  padding-right: 70px;
-  padding-bottom: 50px;
-}
-
-@media screen and (max-width: 600px) {
-  .inner-card {
-    padding: 1rem 1rem 1rem 1.5rem;
-  }
-
-  .container {
-
-    margin-top: 20px;
-
-
-  }
-}
-
-.bg-gray {
-  background-color: #f5f5f5;
-
-}
-.v-list.v-sheet.v-list--dense{
-  padding-top:0
-}
-h1 {
-  font-size: 25px;
-  font-family: morabba;
-  font-weight: 800;
-  line-height: 1.7;
-  margin-top: 13px;
-}
-</style>
-<style>
-.custom-loader {
-  animation: loader 1s infinite;
-  display: flex;
-}
-
-@-moz-keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@-o-keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-</style>
