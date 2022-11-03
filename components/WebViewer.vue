@@ -1,5 +1,5 @@
 <template>
-     <embed :src="this.url" height="900px" />
+     <embed :src="url" height="900px" />
 </template>
   
 <script>
