@@ -49,7 +49,7 @@ export default {
     
 
   },
-
+ 
   manifest: {
     icon: {
       iconSrc: '/app.png',
@@ -117,11 +117,10 @@ export default {
   },
 
 
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-
+    defaultAssets: false,
+    treeShake: true
   },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
