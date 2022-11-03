@@ -10,7 +10,7 @@
     <v-row>
       <v-col cols="12" lg="9" md="8">
         <v-card style="border-radius: 8px" class="inner-card">
-          <a :href="report.exam.file" class="mb-2" target="_blank">برای مشاهده سوالات در new tab کلیک کنید</a>
+          <a :href="report.exam.file_raw" class="mb-2" target="_blank">برای مشاهده سوالات در new tab کلیک کنید</a>
           <WebViewer :url="report.exam.file" />
         </v-card>
       </v-col>
