@@ -59,7 +59,7 @@ export default {
     name: 'سامانه آزمون دکترشو',
 
     descreption: 'سامانه آزمون',
-    start_url: '/',
+    start_url: '/panel',
     theme_color: '#fff',
     background_color: '#000',
   },
