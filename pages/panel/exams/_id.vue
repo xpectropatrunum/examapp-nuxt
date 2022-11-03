@@ -39,7 +39,7 @@
       </v-dialog>
     </v-row>
 
-    <h1 class="mb-1">{{ startedExam.title }}</h1>
+    <h1 class="mb-1">آزمون {{ startedExam.title }}</h1>
 
     <div class="text-gray mb-4" style="font-size: 14px; color: gray">
       {{ startedExam.description }}

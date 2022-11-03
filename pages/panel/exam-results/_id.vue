@@ -2,7 +2,7 @@
   <div>
    
 
-    <h1 class="mb-1">{{ report.exam.title }}</h1>
+    <h1 class="mb-1">آزمون {{ report.exam.title }}</h1>
 
     <div class="text-gray mb-4" style="font-size: 14px; color: gray">
       {{ report.exam.description }}

@@ -1,20 +1,18 @@
 <template>
-     <embed :src="url" height="900px" />
+
+<object width="100%" height="600" type="application/pdf" :data="url ">
+    <p>خطا! pdf را در new tab باز کنید</p>
+</object>
+    
 </template>
   
 <script>
 export default {
     name: 'WebViewer',
     props: {
-        path: String,
         url: String
     },
     
 }
 </script>
   
-<style>
-#webviewer {
-    height: 75vh;
-}
-</style>

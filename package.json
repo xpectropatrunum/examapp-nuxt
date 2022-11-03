@@ -26,6 +26,7 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
+    "@mdi/font": "^7.0.96",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/vuetify": "^1.12.3"
   }
