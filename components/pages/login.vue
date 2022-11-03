@@ -18,6 +18,10 @@
             دکترشو
           </p>
         </div>
+        <div :class="error || success? '':'op-0'" >
+          <v-alert rtl border="left" dense elevation="1" :type="error ? 'error':'success'">{{ error ? error:success }}</v-alert>
+        </div>
+      
         <p class="
             ac--text
             text--align__center
@@ -28,9 +32,8 @@
           {{ login_msg }}
         </p>
         <div class="sign-in--phone-box">
-          <v-alert v-if="error" rtl border="left" dense elevation="1" type="error">{{ error }}</v-alert>
-          <v-alert v-if="success" rtl border="left" dense elevation="1" type="success">{{ success }}
-          </v-alert>
+        
+          
 
           <v-otp-input @finish="signIn" reverse v-model="code" v-if="action == 1 && stage == 1" length="4"
             type="number">
@@ -76,12 +79,12 @@
 
 
 
-        <div style="display: flex;justify-content: center;width:100%">
-          <img src="/assets/illu/login.png">
+        <div style="display: flex;justify-content: center;width:100%;height:200px">
+          <img style="object-fit: cover;" src="/assets/illu/login.png">
         </div>
         <v-btn v-if="stage == 0" rounded depressed style="margin-top: auto" :loading="loading"
           :disabled="!validPhone || loading" color="primary" @click="signIn">
-          بعدی
+          ادامه
         </v-btn>
         <v-btn v-if="stage == 1 && action == 1" rounded depressed style="margin-top: auto" :loading="loading"
           :disabled="!validCode || loading" color="primary" @click="signIn">
@@ -118,7 +121,7 @@ export default {
       show1: false,
       action: 0,
       code: "",
-      phone: "09004101377",
+      phone: "",
       loading: false,
       code_resend: "ارسال کد",
       remain: 60,
@@ -362,12 +365,15 @@ export default {
 </script>
 <style>
 .v-text-field.centered-input input {
-  text-align: center;
+  text-align: center!important;
 }
 
 .code-resend {
   font-weight: 600;
   cursor: pointer;
+}
+.op-0{
+  opacity: 0;
 }
 </style>
 <style lang="scss">

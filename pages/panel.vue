@@ -1,101 +1,116 @@
 <template>
 
-
+   <!-- :mini-variant="!device.isMobile ? mini : false" -->
   <v-app light>
 
-      <v-navigation-drawer dark class="primary z-100" height="-webkit-fill-available"
-        style="border-top-right-radius: 0; border-bottom-right-radius: 0" absolute right expand-on-hover
-        v-model="drawer" :mini-variant.sync="mini" permanent>
-        <v-list-item class="px-2">
-          <v-list-item-title v-if="!mini" class="text-right">{{
-              $auth.user.name
-          }}</v-list-item-title>
-          <v-list-item-avatar>
-            <v-img :src="$auth.user.image"></v-img>
-          </v-list-item-avatar>
-          <!-- <v-btn icon @click.stop="mini = !mini">
+    <v-navigation-drawer v-if="!device.isMobile" dark class="primary z-100" height="-webkit-fill-available" expand-on-hover
+    :mini-variant.sync="mini"
+      style="border-top-right-radius: 0; border-bottom-right-radius: 0" permanent fixed right
+      v-model="drawer">
+      <v-list-item class="px-2">
+        <v-btn v-if="device.isMobile" icon @click.stop="drawer = !drawer">
             <v-icon>mdi-chevron-right</v-icon>
-          </v-btn> -->
+          </v-btn>
+        <v-list-item-title v-if="!device.isMobile ? !mini:true " class="text-right">{{
+            $auth.user.name
+        }}</v-list-item-title>
+        <v-list-item-avatar>
+          <v-img :src="$auth.user.image"></v-img>
+        </v-list-item-avatar>
+        
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item :to="item.link" :nuxt="true" v-for="item in items" :key="item.title" link>
+          <v-list-item-content  v-if="!device.isMobile ? !mini:true ">
+            <v-list-item-title class="text-right">{{
+                item.title
+            }}</v-list-item-title>
+          </v-list-item-content>
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
         </v-list-item>
-
-        <v-divider></v-divider>
-
+      </v-list>
+      <template v-slot:append>
         <v-list dense>
-          <v-list-item :to="item.link" :nuxt="true" v-for="item in items" :key="item.title" link>
+          <v-list-item @click="logout" link>
             <v-list-item-content v-if="!mini">
-              <v-list-item-title class="text-right">{{
-                  item.title
-              }}</v-list-item-title>
+              <v-list-item-title class="text-right">خروج</v-list-item-title>
             </v-list-item-content>
             <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon>mdi-logout-variant</v-icon>
             </v-list-item-icon>
           </v-list-item>
         </v-list>
-        <template v-slot:append>
-          <v-list dense>
-            <v-list-item @click="logout" link>
-              <v-list-item-content v-if="!mini">
-                <v-list-item-title class="text-right">خروج</v-list-item-title>
-              </v-list-item-content>
-              <v-list-item-icon>
-                <v-icon>mdi-logout-variant</v-icon>
-              </v-list-item-icon>
-            </v-list-item>
-          </v-list>
-        </template>
-      </v-navigation-drawer>
+      </template>
+    </v-navigation-drawer>
+    <v-navigation-drawer v-else dark class="primary z-100" height="-webkit-fill-available" 
+
+      style="border-top-right-radius: 0; border-bottom-right-radius: 0"  fixed right
+      v-model="drawer">
+      <v-list-item class="px-2">
+        <v-btn v-if="device.isMobile" icon @click.stop="drawer = !drawer">
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
+        <v-list-item-title class="text-right">{{
+            $auth.user.name
+        }}</v-list-item-title>
+        <v-list-item-avatar>
+          <v-img :src="$auth.user.image"></v-img>
+        </v-list-item-avatar>
+        
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item :to="item.link" :nuxt="true" v-for="item in items" :key="item.title" link>
+          <v-list-item-content  >
+            <v-list-item-title class="text-right">{{
+                item.title
+            }}</v-list-item-title>
+          </v-list-item-content>
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+        </v-list-item>
+      </v-list>
+      <template v-slot:append>
+        <v-list dense>
+          <v-list-item @click="logout" link>
+            <v-list-item-content >
+              <v-list-item-title class="text-right">خروج</v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-icon>
+              <v-icon>mdi-logout-variant</v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list>
+      </template>
+    </v-navigation-drawer>
 
 
-  
-      <div class="header bg-gray">
-      <div class="pl-2">
-        <a  v-if="false" data-v-e4424248="" class="switch-theme">
-          <svg  data-v-e4424248="" height="28.812" viewBox="0 0 27.337 28.812"
-            width="27.337" xmlns="http://www.w3.org/2000/svg" class="moon uk-svg">
-            <path data-v-e4424248=""
-              d="M6598.5,989.758a13.5,13.5,0,0,1-2.254-26.812,12.437,12.437,0,0,0,14.093,19.806A13.511,13.511,0,0,1,6598.5,989.758Z"
-              fill="none" id="Moon" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              transform="translate(-6584 -961.947)"></path>
-          </svg>
-          <svg data-v-e4424248="" fill="none" height="24" viewBox="0 0 24 24" width="24"
-            xmlns="http://www.w3.org/2000/svg" class="sun uk-svg">
-            <path data-v-e4424248=""
-              d="M15.25 12C15.25 13.7949 13.7949 15.25 12 15.25C10.2051 15.25 8.75 13.7949 8.75 12C8.75 10.2051 10.2051 8.75 12 8.75C13.7949 8.75 15.25 10.2051 15.25 12Z"
-              stroke="#141414" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-            <path data-v-e4424248="" d="M12 2.75V4.25" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"
-              stroke-width="1.5"></path>
-            <path data-v-e4424248="" d="M17.2501 6.75L16.0659 7.93417" stroke="#141414" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="1.5"></path>
-            <path data-v-e4424248="" d="M21.25 12.0001L19.75 12.0001" stroke="#141414" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="1.5"></path>
-            <path data-v-e4424248="" d="M17.2501 17.2501L16.0659 16.066" stroke="#141414" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="1.5"></path>
-            <path data-v-e4424248="" d="M12 19.75V21.25" stroke="#141414" stroke-linecap="round" stroke-linejoin="round"
-              stroke-width="1.5"></path>
-            <path data-v-e4424248="" d="M7.93414 16.0659L6.75 17.25" stroke="#141414" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="1.5"></path>
-            <path data-v-e4424248="" d="M4.25 12.0001L2.75 12.0001" stroke="#141414" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="1.5"></path>
-            <path data-v-e4424248="" d="M7.93402 7.93423L6.74988 6.75003" stroke="#141414" stroke-linecap="round"
-              stroke-linejoin="round" stroke-width="1.5"></path>
-          </svg></a>
-      
-
+    <div class="header bg-gray">
+      <div  style="opacity:0; margin-right:10px">
+        <v-app-bar-nav-icon v-if="device.isMobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </div>
       <div class="title-header"> دکترشو</div>
-      
-  
-      <div>
+
+
+      <div  style="margin-right:10px">
+        <v-app-bar-nav-icon v-if="device.isMobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </div>
-      
+
 
     </div>
-   
+
 
     <v-main class="bg-gray">
 
-      <v-container >
+      <v-container>
 
         <nuxt-child />
       </v-container>
@@ -112,17 +127,31 @@
 export default {
   title: "پنل کاربری",
 
+
   loading: {
     color: "blue",
     height: "5px",
   },
   middleware: ["authenticated"],
+  asyncData({ app }) {
+    let mobile = app.$mobileDetect.mobile()
+    app.store.commit('device/setDevice', {
+      isMobile: !mobile ? false : true
+    })
+
+
+  },
+  mounted() {
+    this.drawer = !this.device.isMobile
+  },
+
 
   name: "Dashboard",
 
   data() {
     return {
-      drawer: true,
+      tiny: false,
+      drawer: false,
       items: [
         {
           title: "داشبــــــــــــــــورد",
@@ -136,6 +165,13 @@ export default {
       mini: true,
     };
   },
+  computed: {
+    device() {
+      return { ...this.$store.state.device.device }
+    },
+
+  },
+
   methods: {
     async logout() {
       var logout = await this.$auth.logout();

@@ -48,7 +48,7 @@
       <v-col cols="12" lg="9" md="8">
         <v-card style="border-radius: 8px" class="inner-card">
           <a :href="startedExam.file" class="mb-2" target="_blank">برای مشاهده سوالات در new tab کلیک کنید</a>
-          <!-- <WebViewer :url="startedExam.file" /> -->
+          <WebViewer :url="startedExam.file" />
         </v-card>
       </v-col>
       <v-col cols="12" lg="3" md="4">
@@ -64,7 +64,7 @@
 
           <div class="option-container" dir="ltr">
             <div class="d-flex justify-space-between mt-2" :v-bind-key="index"
-              v-for="(item, index) in Array(startedExam.q_number).fill(0)">
+              v-for="(item, index) in Array(parseInt(startedExam.q_number)).fill(0)">
               <div>{{ index + 1 }}</div>
               <div>
                 <v-btn-toggle @change="submitAnswer(index + 1)" v-model="answers[index + 1]"

@@ -20,7 +20,11 @@ export default {
   },
 
 
-  serverMiddleware: [redirectSSL.create({ redirectHost: "exam.drsho1.ir", enabled: process.env.NODE_ENV === 'production' })],
+  serverMiddleware: [
+    redirectSSL.create({ redirectHost: "exam.drsho1.ir", enabled: process.env.NODE_ENV === 'production' }),
+
+  
+  ],
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/font/style.css',
@@ -42,8 +46,10 @@ export default {
 
   ],
   router: {
+    
 
   },
+
   manifest: {
     icon: {
       iconSrc: '/app.png',
@@ -62,6 +68,7 @@ export default {
     "@nuxtjs/pwa",
     "@nuxtjs/axios",
     '@nuxtjs/auth-next',
+    'nuxt-mobile',
   ],
   axios: {
     baseURL: 'https://api.drsho1.ir/api/'

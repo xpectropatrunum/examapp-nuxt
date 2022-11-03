@@ -11,7 +11,7 @@
       <v-col cols="12" lg="9" md="8">
         <v-card style="border-radius: 8px" class="inner-card">
           <a :href="report.exam.file" class="mb-2" target="_blank">برای مشاهده سوالات در new tab کلیک کنید</a>
-          <!-- <WebViewer :url="report.exam.file" /> -->
+          <WebViewer :url="report.exam.file_raw" />
         </v-card>
       </v-col>
       <v-col cols="12" lg="3" md="4">
@@ -19,6 +19,10 @@
           <div class="justify-space-between d-flex font-14 color-gray">
             <div>زمان صرف شده</div>
             <div>{{ time }}</div>
+          </div>
+          <div class="justify-space-between d-flex font-14 color-gray">
+            <div>نمره منفی</div>
+            <div>{{ report.exam.neg_score ? "دارد" : "ندارد" }}</div>
           </div>
           <div class="justify-space-between d-flex font-14 color-gray">
             <div> تعداد درست </div>
@@ -32,14 +36,15 @@
             <div>تعداد نزده </div>
             <div>{{ report.result.a - report.result.f -  report.result.c }}</div>
           </div>
+         
           <div class="justify-space-between d-flex font-14 color-gray">
-            <div>نمره منفی</div>
-            <div>{{ report.exam.neg_score ? "دارد" : "ندارد" }}</div>
+            <div>درصد آزمون</div>
+            <div class="ltr">{{ report.result.p * 100}}%</div>
           </div>
 
           <div class="option-container" dir="ltr">
             <div class="d-flex justify-space-between mt-2" :v-bind-key="index"
-              v-for="(item, index) in Array(report.exam.q_number).fill(0)">
+              v-for="(item, index) in Array(parseInt(report.exam.q_number)).fill(0)">
               <div>{{ index + 1 }}</div>
               <div>
                 <v-btn-toggle disabled style="max-width: fit-content">
@@ -99,6 +104,7 @@ export default {
     };
   },
   async fetch() {
+   
     try {
       if (!this.report) {
         var report = await $axios.get("exams/exam-reports/" + route.params.id).then(res => res.data)
@@ -123,7 +129,7 @@ export default {
         .toISOString()
         .slice(11, 19);
     }
-
+  
 
   },
 
