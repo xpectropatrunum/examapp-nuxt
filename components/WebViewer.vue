@@ -1,8 +1,6 @@
 <template>
 
-<object width="100%" height="600" type="application/pdf" :data="url ">
-    <p>خطا! pdf را در new tab باز کنید</p>
-</object>
+<iframe style="margin-top:10px" frameborder="0" allowfullscreen width="100%" height="600" type="application/pdf" :src="url "/>
     
 </template>
   
