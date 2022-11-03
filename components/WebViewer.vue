@@ -1,5 +1,5 @@
 <template>
-    <div id='webviewer' ref='viewer'></div>
+     <embed :src="this.url" height="900px" />
 </template>
   
 <script>
@@ -9,18 +9,7 @@ export default {
         path: String,
         url: String
     },
-    mounted: function () {
-        import('@pdftron/webviewer').then(() => {
-
-         
-            WebViewer({
-                path: '../../webviewer',
-                initialDoc: this.url, 
-            }, this.$refs.viewer).then((instance) => {
-             
-            });
-        })
-    }
+    
 }
 </script>
   
