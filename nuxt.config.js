@@ -15,7 +15,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
     ]
   },
 
@@ -61,10 +61,10 @@ export default {
     descreption: 'سامانه آزمون',
     start_url: '/panel/dashboard',
     theme_color: '#fff',
-    background_color: '#000',
+    background_color: '#1976d2',
   },
   loading: {
-    color: 'primary',
+    color: '#1976d2',
     height: '5px',
     rtl: true
   },
