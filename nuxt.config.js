@@ -53,13 +53,13 @@ export default {
  
   manifest: {
     icon: {
-      iconSrc: '/app.png',
+      iconSrc: '/icon.png',
     },
     short_name: 'دکترشو',
     name: 'سامانه آزمون دکترشو',
 
     descreption: 'سامانه آزمون',
-    start_url: '/panel',
+    start_url: '/panel/dashboard',
     theme_color: '#fff',
     background_color: '#000',
   },
