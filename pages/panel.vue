@@ -94,8 +94,15 @@
 
 
     <div class="header bg-gray">
-      <div  style="opacity:0; margin-right:10px">
-        <v-app-bar-nav-icon v-if="device.isMobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <div  :class="$route.name == 'panel-dashboard' ? 'op-0':''" style="margin-right:10px;margin-left:5px">
+
+        <v-app-bar-nav-icon v-if="device.isMobile" @click="$router.go(-1)">
+          <v-btn icon >
+            <v-icon>mdi-chevron-left</v-icon>
+          </v-btn>
+        
+        </v-app-bar-nav-icon>
+
       </div>
       <div class="title-header"> دکترشو</div>
 
@@ -142,6 +149,7 @@ export default {
 
   },
   mounted() {
+    
     this.drawer = !this.device.isMobile
   },
 

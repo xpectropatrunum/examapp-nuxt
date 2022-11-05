@@ -24,9 +24,7 @@ export default {
     };
   },
   methods: {
-    onChange(active) {
-      console.log(active);
-    }
+   
   }
 };
 </script>

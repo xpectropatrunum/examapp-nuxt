@@ -63,7 +63,11 @@ export default {
     theme_color: '#fff',
     background_color: '#000',
   },
-
+  loading: {
+    color: 'primary',
+    height: '5px',
+    rtl: true
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     "@nuxtjs/pwa",
@@ -104,7 +108,7 @@ export default {
 
         token: {
           property: 'token',
-          maxAge: 360 * 60
+          maxAge: 3600 * 600
         },
         refreshToken: {
           maxAge: 20160 * 60

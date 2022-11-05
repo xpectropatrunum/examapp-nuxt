@@ -143,7 +143,7 @@ export default {
       console.log(er);
       this.$toast.error("خطایی رخ داد لطفا بعدا تلاش کنید");
     }
-    console.log(this.startedExam);
+    
   },
   mounted() {
     setInterval(() => {
