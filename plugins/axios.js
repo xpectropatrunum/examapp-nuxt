@@ -1,10 +1,8 @@
-export default function ({ $axios, $auth }) {
+export default function ({ $axios, $auth, redirect }) {
     $axios.onError((error) => {
       if (error.response.status === 401) {
-        if($auth.user?.phone){
-            $auth.refreshTokens()
-
-        }
+        return redirect('/')
+ 
       }
     })
   }
