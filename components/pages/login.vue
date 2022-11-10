@@ -378,6 +378,7 @@ export default {
     z-index: 1000;
     position: fixed;
     bottom: 5px;
+    text-align: center;
 }
 .code-resend {
   font-weight: 600;
