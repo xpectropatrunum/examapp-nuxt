@@ -11,7 +11,12 @@
       <v-col cols="12" lg="9" md="8">
         <v-card style="border-radius: 8px" class="inner-card">
           <a :href="report.exam.file_raw" class="mb-2" target="_blank">برای مشاهده سوالات در new tab کلیک کنید</a>
+
+          <h5 class="mt-1 mb-1">سوالات</h5>
           <WebViewer :url="report.exam.file" />
+          <h5 class="mt-1 mb-1">پاسخ تشریحی</h5>
+
+          <WebViewer :url="report.answer" />
         </v-card>
       </v-col>
       <v-col cols="12" lg="3" md="4">
