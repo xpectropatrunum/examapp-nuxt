@@ -101,6 +101,11 @@
 
       </div>
     </div>
+    <div class="footer-cp">
+        طراحی و توسعه توسط
+        <a target="_blank" href="https://sourcearena.ir">سورس آرنا</a> 
+      </div>
+
     </div>
 </template>
 <script>
@@ -367,7 +372,13 @@ export default {
 .v-text-field.centered-input input {
   text-align: center!important;
 }
-
+.footer-cp{
+  width: 100%;
+    color: black;
+    z-index: 1000;
+    position: fixed;
+    bottom: 5px;
+}
 .code-resend {
   font-weight: 600;
   cursor: pointer;
