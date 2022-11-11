@@ -5082,7 +5082,6 @@ body[dir=ltr] .contacts--search-icon {
     justify-content: center;
     margin: 0 auto 0px;
     max-width: 185px;
-    padding-top: 15px;
     pointer-events: none
 }
 
@@ -5108,7 +5107,7 @@ body[dir=ltr] .contacts--search-icon {
     z-index: 1;
     background-color: #fff;
     overflow: hidden;
-    position: fixed;
+    padding-top: 100px;
     top: 0;
     right: 0;
     left: 0;
@@ -5160,7 +5159,7 @@ body[dir=ltr] .contacts--search-icon {
     border-radius: 25px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 25px
+    padding: 15px 25px
 }
 
 @media (max-width: 350px) {
@@ -5205,8 +5204,7 @@ body[dir=ltr] .contacts--search-icon {
     font-size: 21px;
 
     letter-spacing: -1.26px;
-    line-height: 1.7;
-    margin-top: 13px
+
 }
 
 .sign-in--country-code {
@@ -5620,7 +5618,7 @@ body[dir=ltr] .contacts--search-icon {
 .logo-box--slang {
     font-size: 55px;
     font-weight: 900;
-    padding-top: 15px;
+    padding-top: 22px;
     padding-bottom: 30px;
 }
 

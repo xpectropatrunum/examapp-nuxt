@@ -6,22 +6,19 @@
         <div class="c--auth-box-header-svg"></div>
       </div>
       <div class="auth--body" dir="ltr">
-        <div class="auth--logo-box">
+        <div class="auth--logo-box"><img src="/icon.png" style="width: 100px;border-radius: 50%;">
 
-          <p class="
-              ac--text
-              text--align__center
-              text--weight__regular
-              text--size__regular
-              logo-box--slang morabba
-            " dir="auto" auto-dir="auto">
+
+          <p dir="auto" auto-dir="auto"
+            class="ac--text text--align__center text--weight__regular text--size__regular logo-box--slang morabba">
             دکترشو
           </p>
         </div>
-        <div :class="error || success? '':'op-0'" >
-          <v-alert rtl border="left" dense elevation="1" :type="error ? 'error':'success'">{{ error ? error:success }}</v-alert>
+        <div :class="error || success? '':'op-0'">
+          <v-alert rtl border="left" dense elevation="1" :type="error ? 'error':'success'">{{ error ? error:success }}
+          </v-alert>
         </div>
-      
+
         <p class="
             ac--text
             text--align__center
@@ -32,8 +29,8 @@
           {{ login_msg }}
         </p>
         <div class="sign-in--phone-box">
-        
-          
+
+
 
           <v-otp-input @finish="signIn" reverse v-model="code" v-if="action == 1 && stage == 1" length="4"
             type="number">
@@ -102,11 +99,11 @@
       </div>
     </div>
     <div class="footer-cp">
-        طراحی و توسعه توسط
-        <a target="_blank" href="https://sourcearena.ir">سورس آرنا</a> 
-      </div>
-
+      طراحی و توسعه توسط
+      <a target="_blank" href="https://sourcearena.ir">سورس آرنا</a>
     </div>
+
+  </div>
 </template>
 <script>
 export default {
@@ -138,7 +135,7 @@ export default {
     };
   },
 
-  
+
   methods: {
     refresh() {
       this.$nuxt.refresh();
@@ -370,21 +367,24 @@ export default {
 </script>
 <style>
 .v-text-field.centered-input input {
-  text-align: center!important;
+  text-align: center !important;
 }
-.footer-cp{
+
+.footer-cp {
   width: 100%;
-    color: black;
-    z-index: 1000;
-    position: fixed;
-    bottom: 5px;
-    text-align: center;
+  color: black;
+  z-index: 1000;
+
+  bottom: 5px;
+  text-align: center;
 }
+
 .code-resend {
   font-weight: 600;
   cursor: pointer;
 }
-.op-0{
+
+.op-0 {
   opacity: 0;
 }
 </style>
